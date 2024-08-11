@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Product = require('./product.model.js')
-const productRouter = require('./routes/product.routs.js')
-
+const Product = require('./product.model.js');
+const productRouter = require('./routes/product.routs.js');
+const MONGODB_CONNECTION_PATH = require("dotenv/config");
 
 const app = express()
 try {
@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 
 
 
-mongoose.connect('mongodb+srv://mohamedbazber:EvNbzufMFc2kL4K9@backenddb.7wghg.mongodb.net/API-DB?retryWrites=true&w=majority&appName=backendDB')
+mongoose.connect(process.env.MONGODB_CONNECTION_PATH)
   .then(() => {console.log('Connected!') ;
 
   app.listen(3000); }).catch(()=>{
